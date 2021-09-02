@@ -1,7 +1,10 @@
 const express = require("express");
-const authRoutes = require("./routes/auth");
 const app = express();
+const router = require("./routes/router");
+const controller = require("./controllers/controller");
 
-app.use("/",authRoutes);
+app.use(router);
+
+app.use(controller.get404);
 
 const server = app.listen(3000);
