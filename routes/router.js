@@ -14,9 +14,9 @@ router.get("/v1/orders/:cryptoId", mainController.ordersController);
 //all orders of logged in user from specific crypto and order satate
 router.get("/v1/orders/:cryptoId/:state", mainController.ordersController);
 
-//all markets information
+//all markets detail
 router.get("/v1/markets", mainController.marketsController);
-//specific crypto market information
+//specific crypto market detail
 router.get("/v1/markets/:cryptoId", mainController.marketsController);
 
 //all user wallets

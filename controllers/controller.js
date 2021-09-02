@@ -6,7 +6,6 @@ exports.userController = (req, res, next) => {
 exports.ordersController = (req, res, next) => {
   const cryptoId = req.params.cryptoId;
   const orderState = req.params.state;
-  console.log(cryptoId, orderState);
   if (!cryptoId && !orderState) {
     return res.status(200).json({ data: `all order of the user` });
   }
