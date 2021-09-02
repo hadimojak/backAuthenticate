@@ -4,12 +4,20 @@ exports.userController = (req, res, next) => {
 };
 
 exports.ordersController = (req, res, next) => {
-  const userId = req.params.userId;
+  const cryptoId = req.params.cryptoId;
   const orderState = req.params.state;
-  if (!userId && !orderState) {
+  console.log(cryptoId, orderState);
+  if (!cryptoId && !orderState) {
     return res.status(200).json({ data: `all order of the user` });
   }
-  res.status(200).json({ data: `${orderState} order of user ${userId}` });
+  if (cryptoId && !orderState) {
+    return res
+      .status(200)
+      .json({ data: `all order of the user from ${cryptoId}` });
+  }
+  res
+    .status(200)
+    .json({ data: `${orderState} order of ${cryptoId} cryptocorency` });
 };
 
 exports.marketsController = (req, res, next) => {
@@ -32,8 +40,9 @@ exports.referralController = (req, res, next) => {
   res.status(200).json({ data: "referral data" });
 };
 
+//routes not found 404 error
 exports.get404 = (req, res, next) => {
   res.status(404).json({
-    data: "Page Not Found",
+    data: "Page Not Found . header must be included",
   });
 };
